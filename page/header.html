@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Product example · Bootstrap v5.1</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/product/">
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/headers.css" rel="stylesheet">
+  </head>
+  <body>
+  <header>
+    <nav class="navbar navbar-dark bg-dark" aria-label="Fourth navbar example">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">한경몰</a>
+        <div class="">
+          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+          <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+          </form>
+        </div>
+        <!--반응형 적용 안됐음. 위의 navbar태그의 navbar-expand-xx 속성 사용하면 반응형 적용 가능-->
+          <div class="d-flex justify-content-end">
+              <a class="nav-link text-white" href="#">판매하기</a>
+              <a class="nav-link text-white" href="http://localhost:12345/main/mystore.html">내상점</a>
+              <a class="nav-link text-white" href="http://localhost:12345/main/favorite.html">찜</a>
+              <a class="nav-link text-white" href="http://localhost:12345/main/chatting.html">채팅</a>
+              <button type="button" class="btn btn-outline-light me-2">Login</button>
+          </div>
+      </div>
+       <!--카테고리-->
+       <!--토글 사이드바로 만들면 좋겠지만 아직까진 방법이 없음-->
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <h4 class="text-white">카테고리</h4>
+                <ul class="navbar">
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      교재
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                      <li><a class="dropdown-item" href="#">전공</a></li>
+                      <li><a class="dropdown-item" href="#">교양</a></li>
+                    </ul>
+                  </li>
+        
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      남성의류
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                      <li><a class="dropdown-item" href="#">상의</a></li>
+                      <li><a class="dropdown-item" href="#">하의</a></li>
+                      <li><a class="dropdown-item" href="#">아우터</a></li>
+                      <li><a class="dropdown-item" href="#">모자</a></li>
+                    </ul>
+                  </li>
+        
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      여성의류
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                      <li><a class="dropdown-item" href="#">상의</a></li>
+                      <li><a class="dropdown-item" href="#">하의</a></li>
+                      <li><a class="dropdown-item" href="#">원피스</a></li>
+                      <li><a class="dropdown-item" href="#">아우터</a></li>
+                      <li><a class="dropdown-item" href="#">모자</a></li>
+                    </ul>
+        
+                      <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="#">잡화</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="#">식품</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="#">가구</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="#">기프티콘</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="#">원룸</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="#">나눔</a>
+                      </li>
+                </ul>
+              </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+</header>
+
+  </body>
+</html>

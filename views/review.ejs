@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<%-include('layouts/header');-%>
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+
+  <!-- Custom styles for this template -->
+  <link href="css/main.css" rel="stylesheet">
+  <%-include('layouts/scripts');-%>
+
+    <body>
+      <%-include('layouts/navbar');-%>
+
+        <div class="container">
+          <h2 class="h3 mt-5 mb-5 page-title">Review</h2>
+          <form role="form" method="POST">
+
+            <div class="col-sm-6 col-md-offset-3 mt-5">
+              <div class="form-group">
+                <label for="inputName">상점명</label>
+               <!-- <input type="text" class="form-control" id="inputName"> -->
+              </div>
+
+
+
+              <div class="mt-5 mb-5">
+                <label class="col=col-md-3 col-form-labal">이미지</label>
+                <div class="col-md-9">
+                  <input type="file" class="form-control" accept="image/png,image/jpeg">
+                  <div class="alert alert-secondary" role="alert">
+                    <ul>
+                      <li>이미지 사이즈 : 700*700</li>
+                      <li>파일 사이즈 : 1M 이하</li>
+                      <li>파일 확장자 : png, jpg만 가능</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">리뷰 작성</label>
+              <textarea name="review_message" id="review_message" class="form-control" rows="3"></textarea>
+            </div>
+
+            <div class="vstack gap-2 col-md-5 mx-auto mt-5 mb-4">
+              <button type="button" class="btn btn-secondary mb-1">등록</button>
+          </form>
+          <button type="button" class="btn btn-outline-secondary">취소</button>
+        </div>
+
+        </div>
+
+    </body>
+
+</html>

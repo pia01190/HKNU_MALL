@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <%-include('layouts/header');-%>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    
+    <!-- Custom styles for this template -->
+    <link href="css/mystore.css" rel="stylesheet" value="미사용">
+    <%-include('layouts/scripts');-%>
+
+  <body>
+    <%-include('layouts/navbar');-%>
+
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="col-10">
+          <h2 class="h2 mt-5 mb-5 page-title"><%= member_id %>님의 상점</h2> 
+          <div class="mt-2">
+              <form>
+                  <div class="row mt-3 justify-content-start">
+                      <div class="col-3 mb-2">
+                          <div class="avatar">
+                            <% if(mystore_data[0].store_image) {%>
+                            <img src="https://static.nid.naver.com/images/web/user/default.png" width="100%" alt="..." class="avatar-img rounded-circle" />
+                            <% } else { %> 
+                            <img src="<%= mystore_data[0].store_image %>" alt="..." class="avatar-img rounded-circle" />
+                          <% } %>
+                          </div>
+                      </div>
+                      <div class="col-4 mt-4 mb-3">
+                          <div class="name">
+                            <h3 class="mt-4"><%= mystore_data[0].store_name %></h3>
+                          </div>
+                          <div class="explanation">
+                            <h6 class="mt-4 mb-4 color:#aeb0b4"><%= mystore_data[0].store_description %></h6>
+                          </div>
+                      </div>
+                  </div>
+                  <hr class="my-4">
+              </form>
+
+            <p>
+              <a class="btn btn-secondary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">상품</a>
+              <a class="btn btn-secondary" data-bs-toggle="collapse" href="#multiCollapseExample2" role="button" aria-expanded="false" aria-controls="multiCollapseExample2">거래 후기</a>
+              <% if(member_id == session_member_id){ %>
+              <a class="btn btn-secondary" data-bs-toggle="collapse" onclick = "location.href = '/mystore/<%= member_id %>/form' " role="button" aria-expanded="false" aria-controls="multiCollapseExample3">내상점 수정</a>
+              <a class="btn btn-secondary" data-bs-toggle="collapse" onclick = "location.href = '/setting' " role="button" aria-expanded="false" aria-controls="multiCollapseExample4">정보 수정</a>
+              <% } %>
+            </p>
+            <div class="row">
+              <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                  <div class="card card-body">
+                    <div class="album py-5 bg-light">
+                      <div class="container">
+                      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+                        <% for(var i =0; i < boards_data.length; i++){ %>
+                          <div class="col">
+                            <div class="card shadow-sm" onclick = "location.href = '/boards/<%= boards_data[i].board_no %>' ">
+                              <% if( image[i] != 'undefined' ){ %>
+                                <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="<%= image[i] %>" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"></img>
+                                <% }else{ %>
+                                  <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                                <% } %>
+                              <div class="card-body">
+                                <p class="card-text"><%= boards_data[i].title %></p>
+                                <div class="d-flex justify-content-between align-items-center">
+                    
+                                  <small class="text-muted"><%= moment[i] %></small>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <% } %>
+                     </div>
+                     </div>
+                    </div>
+                  </div>
+
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                      <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                          <span aria-hidden="true">&laquo;</span>
+                        </a>
+                      </li>
+                      <li class="page-item"><a class="page-link" href="#">1</a></li>
+                      <li class="page-item"><a class="page-link" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                          <span aria-hidden="true">&raquo;</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+
+                </div>
+              </div>
+              <div class="row mt-3 mb-5">
+              <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample2">
+                  <div class="card card-body">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">상점명</th>
+                          <th scope="col">제목</th>
+                          <th scope="col">이미지</th>
+                          <th scope="col">리뷰 작성</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>유저1</td>
+                          <td>제목 내용</td>
+                          <td>
+                              <img src="..." class="rounded mx-auto d-block">
+                          </td>
+                          <td>리뷰 내용</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>유저2</td>
+                          <td>제목 내용</td>
+                          <td>
+                            <img src="..." class="rounded mx-auto d-block">
+                          </td>
+                          <td>리뷰 내용</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td>유저3</td>
+                          <td>제목 내용</td>
+                          <td>
+                            <img src="..." class="rounded mx-auto d-block">
+                          </td>
+                          <td>리뷰 내용</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <nav aria-label="Page navigation example">
+                      <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                          <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                          </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                          <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </nav>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+</div>
+
+      
+  </body>
+</html>

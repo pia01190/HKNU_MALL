@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Product example · Bootstrap v5.1</title>
+    <script src="/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bootstrap core CSS -->
+<link href="/dist/css/bootstrap.min.css" rel="stylesheet"> 
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    
+    <!-- Custom styles for this template -->
+    <link href="/mystore.css" rel="stylesheet">
+  </head>
+  <body>
+     <!--HTML include 참고: https://www.w3schools.com/howto/howto_html_include.asp-->
+    <div style="position: sticky; top: 0; "w3-include-html="header.html"></div>
+    <script>
+      function includeHTML() {
+        var z, i, elmnt, file, xhttp;
+        /* Loop through a collection of all HTML elements: */
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          elmnt = z[i];
+          /*search for elements with a certain atrribute:*/
+          file = elmnt.getAttribute("w3-include-html");
+          if (file) {
+            /* Make an HTTP request using the attribute value as the file name: */
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+              if (this.readyState == 4) {
+                if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+                if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                /* Remove the attribute, and call this function once more: */
+                elmnt.removeAttribute("w3-include-html");
+                includeHTML();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            /* Exit the function: */
+            return;
+          }
+        }
+      }
+    includeHTML();
+  </script>
+
+<div class="container justify-content-center">
+  <main>
+    <div class="py-5 text-center">
+      <h2>내상점 수정</h2>
+    </div>
+
+    <table class="table-bordered text-center" style="margin-left: auto; margin-right: auto;">
+
+      <tbody>
+      <tr>
+          <th scope="row">
+              <div class="thcell">내상점 사진</div>
+          </th>
+          <td>
+              <div class="tdcell row">
+                <div class="avatar mt-3">
+                  <img src="https://static.nid.naver.com/images/web/user/default.png" alt="..." class="avatar-img rounded-circle" />
+                </div>
+                <div class="align-items-center mb-3">
+                  <label for="formFile" class="form-label">사진 변경</label>
+                  <input class="form-control" type="file" id="formFile">
+                </div>
+              </div>
+          </td>
+      </tr>
+
+      <tr>
+          <th scope>
+              <div class="thcell row"><label for="inpNickname">상점 이름</label></div>
+          </th>
+          <td>
+              <div class="tdcell row">
+                  <p class="contxt_webctrl nickname mt-3">
+                      <input type="text" name="nickname" id="inpNickname" value="상점 이름" style="width:500px">
+                      <input type="text" style="display: none;" >
+                  </p>
+              </div>
+          </td>
+      </tr>
+
+      <tr>
+          <th scope>
+              <div class="thcell"><label for="inpNickname">상점 설명</label></div>
+          </th>
+          <td>
+              <div class="tdcell">
+                  <p class="contxt_webctrl nickname mt-3">
+                      <input type="text" name="nickname" id="inpNickname" value="상점 설명" style="width:500px">
+                      <input type="text" style="display: none;" >
+                  </p>
+              </div>
+          </td>
+      </tr>
+
+      </tbody>
+  </table>
+
+  <div class="d-grid gap-2 col-4 mx-auto">
+    <button class="btn btn-secondary btn-lg mt-4" type="button">수정</button>
+    <button class="btn btn-secondary btn-lg mt-2 mb-3" type="button">취소</button>
+  </div>
+
+
+  </main>
+</div>
+
+
+
+  </body>
+</html>

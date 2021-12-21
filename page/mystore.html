@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Product example · Bootstrap v5.1</title>
+    <script src="/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bootstrap core CSS -->
+<link href="/dist/css/bootstrap.min.css" rel="stylesheet"> 
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    
+    <!-- Custom styles for this template -->
+    <link href="/mystore.css" rel="stylesheet">
+  </head>
+  <body>
+     <!--HTML include 참고: https://www.w3schools.com/howto/howto_html_include.asp-->
+    <div style="position: sticky; top: 0; "w3-include-html="header.html"></div>
+    <script>
+      function includeHTML() {
+        var z, i, elmnt, file, xhttp;
+        /* Loop through a collection of all HTML elements: */
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          elmnt = z[i];
+          /*search for elements with a certain atrribute:*/
+          file = elmnt.getAttribute("w3-include-html");
+          if (file) {
+            /* Make an HTTP request using the attribute value as the file name: */
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+              if (this.readyState == 4) {
+                if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+                if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                /* Remove the attribute, and call this function once more: */
+                elmnt.removeAttribute("w3-include-html");
+                includeHTML();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            /* Exit the function: */
+            return;
+          }
+        }
+      }
+    includeHTML();
+  </script>
+
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="col-10">
+          <h2 class="h2 mt-5 mb-5 page-title">내상점</h2>
+          <div class="mt-2">
+              <form>
+                  <div class="row mt-3 justify-content-start">
+                      <div class="col-3 mb-2">
+                          <div class="avatar">
+                              <img src="https://static.nid.naver.com/images/web/user/default.png" alt="..." class="avatar-img rounded-circle" />
+                          </div>
+                      </div>
+                      <div class="col-4 mt-4 mb-3">
+                          <div class="name">
+                            <h3 class="mt-4">상점 이름</h3>
+                          </div>
+                          <div class="explanation">
+                            <h6 class="mt-4 mb-4 color:#aeb0b4">상점 설명</h6>
+                          </div>
+                      </div>
+                  </div>
+                  <hr class="my-4">
+              </form>
+
+            <p>
+              <a class="btn btn-secondary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">상품</a>
+              <a class="btn btn-secondary" data-bs-toggle="collapse" href="#multiCollapseExample2" role="button" aria-expanded="false" aria-controls="multiCollapseExample2">거래 후기</a>
+              <a class="btn btn-secondary" data-bs-toggle="collapse" href="#multiCollapseExample3" role="button" aria-expanded="false" aria-controls="multiCollapseExample3">내상점 수정</a>
+              <a class="btn btn-secondary" data-bs-toggle="collapse" href="#multiCollapseExample4" role="button" aria-expanded="false" aria-controls="multiCollapseExample4">정보 수정</a>
+            </p>
+
+            <div class="row">
+              <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample1">
+                  <div class="card card-body">
+                    <div class="album py-5 bg-light">
+                      <div class="container">
+                      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+                        <div class="col">
+                          <div class="card shadow-sm">
+                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                  
+                            <div class="card-body">
+                              <p class="card-text">설명</p>
+                              <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">9 mins</small>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="card shadow-sm">
+                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                            <div class="card-body">
+                              <p class="card-text">설명</p>
+                              <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">9 mins</small>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="card shadow-sm">
+                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                            <div class="card-body">
+                              <p class="card-text">설명</p>
+                              <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">9 mins</small>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="card shadow-sm">
+                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                            <div class="card-body">
+                              <p class="card-text">설명</p>
+                              <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">9 mins</small>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="card shadow-sm">
+                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                            <div class="card-body">
+                              <p class="card-text">설명</p>
+                              <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">9 mins</small>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="card shadow-sm">
+                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                            <div class="card-body">
+                              <p class="card-text">설명</p>
+                              <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">9 mins</small>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="card shadow-sm">
+                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                            <div class="card-body">
+                              <p class="card-text">설명</p>
+                              <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">9 mins</small>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="card shadow-sm">
+                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                            <div class="card-body">
+                              <p class="card-text">설명</p>
+                              <div class="d-flex justify-content-between align-items-center">
+                                <small class="text-muted">9 mins</small>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    </div>
+                  </div>
+
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                      <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                          <span aria-hidden="true">&laquo;</span>
+                        </a>
+                      </li>
+                      <li class="page-item"><a class="page-link" href="#">1</a></li>
+                      <li class="page-item"><a class="page-link" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                          <span aria-hidden="true">&raquo;</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+
+                </div>
+              </div>
+              <div class="row mt-3 mb-5">
+              <div class="col">
+                <div class="collapse multi-collapse" id="multiCollapseExample2">
+                  <div class="card card-body">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">상점명</th>
+                          <th scope="col">제목</th>
+                          <th scope="col">이미지</th>
+                          <th scope="col">리뷰 작성</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>유저1</td>
+                          <td>제목 내용</td>
+                          <td>
+                              <img src="..." class="rounded mx-auto d-block">
+                          </td>
+                          <td>리뷰 내용</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>유저2</td>
+                          <td>제목 내용</td>
+                          <td>
+                            <img src="..." class="rounded mx-auto d-block">
+                          </td>
+                          <td>리뷰 내용</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td>유저3</td>
+                          <td>제목 내용</td>
+                          <td>
+                            <img src="..." class="rounded mx-auto d-block">
+                          </td>
+                          <td>리뷰 내용</td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <nav aria-label="Page navigation example">
+                      <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                          <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                          </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                          <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </nav>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+</div>
+
+      
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <%-include('layouts/header');-%>
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 0.3rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+    </style>
+    
+    <!-- Custom styles for this template -->
+    <link href="css/main.css" rel="stylesheet">
+    <%-include('layouts/scripts');-%>
+
+<body>
+<%-include('layouts/navbar');-%>
+ 
+
+
+  
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          최신순
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="#">관심순</a></li>
+          <li><a class="dropdown-item" href="#">평점순</a></li>
+          <li><a class="dropdown-item" href="#"></a></li>
+        </ul>
+      </div>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+      <% for(var i =0; i < data.length; i++){ %>
+      <div id="container" class="col">
+        <div class="card shadow-sm item" onclick = "location.href = '/boards/<%= data[i].board_no %>' ">
+          <% if( image[i] != 'undefined' ){ %>
+            <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="<%= image[i] %>" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"></img>
+            <% }else{ %>
+              <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="/images/x.png" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em"></img>
+            <% } %>
+          <div class="card-body">
+            <p class="card-text"><%= data[i].title %></p>
+            <div class="d-flex justify-content-between align-items-center">
+              <small class=""><strong><%= data[i].price %>원</strong></small>
+              <small class="text-muted"><%= moment[i] %></small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    
+      
+  </div>
+  </div>
+
+
+
+
+
+      
+  </body>
+</html>

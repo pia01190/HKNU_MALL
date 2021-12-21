@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+    <%-include('layouts/header');-%>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBicTQasHfr57CHiw9W08r4C2Vvgw-aC10" async></script>
+<script src="js/myLoc.js"></script>
+<script>
+    infiniteScroll({
+    container: "#container",
+    item: ".item",
+    next: ".next"
+})
+</script>
+<link href="css/board.css" rel="stylesheet">
+<%-include('layouts/scripts');-%>
+<body>
+<%-include('layouts/navbar');-%>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 mx-auto">
+                <h2 class="h3 mt-5 mb-5 page-title">기본정보</h2>
+                <div class="mt-3">
+                    <form method="POST" enctype="multipart/form-data">
+
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" id="member_id" name="member_id" placeholder=""value="<%= member_id %>">
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" class="form-control" id="nickname" name="nickname" placeholder=""value="<%= nickname %>">
+                        </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">제목</label>
+                                <input type="text" class="form-control" id="title" name="title" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="disabledSelect">카테고리를 선택하세요</label>
+                                <select id="disabledSelect" class="form-control" name="sub_category_scategory_no">
+                                  <option id ="scategory"name="scategory" value="11">교재/전공</option>
+                                  <option id="scategory" name="scategory" value="12">교재/교양</option>
+                                  <option id="scategory" name="scategory" value="21">남성의류/상의</option>
+                                  <option id="scategory" name="scategory" value="22">남성의류/하의</option>
+                                  <option id="scategory" name="scategory" value="23">남성의류/아우터</option>
+                                  <option id="scategory" name="scategory" value="24">남성의류/모자</option>
+                                  <option id="scategory" name="scategory" value="31">여성의류/상의</option>
+                                  <option id="scategory" name="scategory" value="32">여성의류/하의</option>
+                                  <option id="scategory" name="scategory" value="33">여성의류/원피스</option>
+                                  <option id="scategory" name="scategory" value="34">여성의류/아우터</option>
+                                  <option id="scategory" name="scategory" value="35">여성의류/모자</option>
+                                  <option id="scategory" name="scategory" value="41">잡화</option>
+                                  <option id="scategory" name="scategory" value="51">식품</option>
+                                  <option id="scategory" name="scategory" value="61">기프티콘</option>
+                                  <option id="scategory" name="scategory" value="71">원룸</option>
+                                  <option id="scategory" name="scategory" value="81">나눔</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">가격</label>
+                                <input type="text" class="form-control" id="price" name="price" placeholder="">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">내용</label>
+                                <textarea class="form-control" id="content" name="content" rows="5"></textarea>
+                            </div>
+                            <div class="col-md-9">
+                                <input type="file" id="image" name="image" class="form-control" multiple>
+                                <div class="alert alert-secondary" role="alert">
+                                  <ul>
+                                    <li>이미지 사이즈 : 700*700</li>
+                                    <li>파일 사이즈 : 1M 이하</li>
+                                    <li>파일 확장자 : png, jpg만 가능</li>
+                                  </ul>
+                                </div>
+                              </div>
+                            <div id="floating-panel">
+                                <input id="hide-markers" class="invisible" type="button" value="Hide Marker" />
+                                <input id="show-markers" type="button" value="Add Marker" />
+                                <input id="delete-markers" type="button" value="Delete Marker" />
+                              </div>
+                            <div class="col-md-4" style="width:25%; height: 25vh;"id="map">
+                                <div id="map1">지도</div>
+                                <div id="map2"></div>
+                              </div>
+                            <button type="submit" class="btn btn-default">올리기</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+.container {
+  max-width: 960px;
+}
+
+/*
+ * Custom translucent site header
+ */
+
+
+svg text { font-family: 'Staatliches', cursive; font-size: 6em; }
+

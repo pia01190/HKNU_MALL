@@ -1,0 +1,129 @@
+<<!doctype html>
+    <html lang="en">
+    <%-include('layouts/header');-%>
+
+        <head>
+
+            <link href="css/chatting.css" rel="stylesheet">
+
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBicTQasHfr57CHiw9W08r4C2Vvgw-aC10"></script>
+            <script src=""></script>
+            <%-include('layouts/scripts');-%>
+        </head>
+
+        <body>
+            <!--같은 room의 사람들끼지만 채팅가능-->
+            <%-include('layouts/navbar');-%>
+                <div class="container">
+                    <h3>Socket.io Chat Example</h3>
+                    <!-- <form class="form-inline"> -->
+                    <form class="form-horizontal">
+                        <div class="form-group">
+
+                            <div class="form-group">
+                                <label for="room" class="col-sm-2 control-label">Room</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="room" placeholder="Room">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="msg" class="col-sm-2 control-label">Message</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="msg" placeholder="Message">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-default">Send</button>
+                                </div>
+                            </div>
+                    </form>
+
+                    </div>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+                    <script src="/socket.io/socket.io.js"></script>
+                    <script>
+                        $(function() {
+                            // 지정 namespace로 접속한다
+                            var chat = io('http://localhost:3000/chat'),
+                                news = io('/news');
+                            $("form").submit(function(e) {
+                                e.preventDefault();
+                                // 서버로 자신의 정보를 전송한다.
+                                chat.emit("chat message", {
+                                    rname: $("#name").val(),
+                                    room: $("#room").val(),
+                                    msg: $("#msg").val()
+                                });
+                            });
+                            // 서버로부터의 메시지가 수신되면
+                            chat.on('chat message', function(username, data) {
+                                $('#conversation').append(data + ':</b> ' + username + '<br>');
+                                if ($('#scrolldiv').prop('scrollHeight') > $('#scrolldiv').height())
+                                    $('#scrolldiv').scrollTop($('#scrolldiv').prop('scrollHeight'));
+                            });
+                            $('#datasend').click(function() {
+                                var message = $('#data').val();
+                                $('#data').val('');
+                                socket.emit('sendmsg', message);
+                            });
+                        });
+                    </script>
+
+                    <!--채팅방 구현못함,데이터 베이스 연동x-->
+
+                    <div id="location">
+                    </div>
+                    <div id="distance">
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-3">
+                            <div class="list-group" id="list-tab" role="tablist">
+                                <a class="list-group-item list-group-item-action" id="list-home-list" data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">user1
+                        <span class="badge bg-primary rounded-pill"> 1</span>
+
+                    </a>
+                                <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile">
+        user2
+        <span class="badge bg-primary rounded-pill">1</span>
+      </a>
+
+                            </div>
+                        </div>
+
+                        <div class="col-9">
+                            <div class="content" id="nav-tabContent">
+                                <div class="pane" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                                    <div class="row">
+                                        <div class="col-md-6" id="chat">
+                                            <div id="chatHeader">채팅방1</div>
+                                            <div id="box">
+                                                <div id="scrolldiv" style="float:left;width:80%;height:250px; margin-top:20px; overflow: auto;">
+                                                    <div id="conversation"></div>
+                                                </div>
+                                                <div style="float:left;width:20%;height:250px;">
+                                                    <div id="userlist" style="width:100%;height:250px; margin:20px 20px 10px 10px; overflow: auto;"></div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                                <button type="submit" class="btn btn-default"></button>
+                                            </div>
+                                        </div>
+                                        </form>
+                                    </div>
+                                    <!--반응형 적용안됨-->
+
+                                </div>
+
+                            </div>
+
+
+
+
+        </body>
+
+    </html>

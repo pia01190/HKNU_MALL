@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+    <%-include('layouts/header');-%>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBicTQasHfr57CHiw9W08r4C2Vvgw-aC10" async></script>
+<script src="js/myLoc.js"></script>
+
+<link href="css/article.css" rel="stylesheet">
+<%-include('layouts/scripts');-%>
+<body>
+    <%-include('layouts/navbar');-%>
+    <div class="container">
+        <div class="h-100 d-flex justify-content-center">
+            <div class="row w-50">
+                <div class="col-12 mx-auto">
+                    <div class="row align-items-center">
+                        <img src="" alt="상품이미지" class=" w-50">
+                        <div class="col-md-5 text-center mb-3">
+                            <img src="..." alt="..." class="img-rounded">
+                            <img src="..." alt="..." class="img-rounded">
+                            <img src="..." alt="..." class="img-rounded">
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-10">
+                            <div class="avatar avatar-sm">
+                                <img src="" alt="썸네일" class=" rounded-circle img-thumbnail">
+                            </div>
+                            <h4 class="">상점 이름</h4>
+                        </div>
+                        <div class="col-2">
+                            rating
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="">제목</h4>
+                    </div>
+                    <div>카테고리 업로드 시간</div>
+                    <div>
+                        <h4 class="">가격</h4>
+                    </div>
+                    <div>글 내용</div>
+                    <div> 채팅방개설수/조회</div>
+
+                    <div class="col-md-4" style="width:25%; height: 25vh;" id="map">
+                        <div id="map1">지도</div>
+                        <div id="map2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

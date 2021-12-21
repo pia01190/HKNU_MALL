@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>찜목록</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="/dist/js/bootstrap.js"></script>
+
+</head>
+
+<body class="skin-light">
+    <div style="position: sticky; top: 0; " w3-include-html="header.html"></div>
+    <script>
+        function includeHTML() {
+            var z, i, elmnt, file, xhttp;
+            /* Loop through a collection of all HTML elements: */
+            z = document.getElementsByTagName("*");
+            for (i = 0; i < z.length; i++) {
+                elmnt = z[i];
+                /*search for elements with a certain atrribute:*/
+                file = elmnt.getAttribute("w3-include-html");
+                if (file) {
+                    /* Make an HTTP request using the attribute value as the file name: */
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4) {
+                            if (this.status == 200) { elmnt.innerHTML = this.responseText; }
+                            if (this.status == 404) { elmnt.innerHTML = "Page not found."; }
+                            /* Remove the attribute, and call this function once more: */
+                            elmnt.removeAttribute("w3-include-html");
+                            includeHTML();
+                        }
+                    }
+                    xhttp.open("GET", file, true);
+                    xhttp.send();
+                    /* Exit the function: */
+                    return;
+                }
+            }
+        }
+        includeHTML();
+    </script>
+    <!--div 태크 링크걸기 href-->
+    <!--
+<div OnClick="location.href ='http://URL주소'" style="cursor:pointer;" >
+-->
+
+    <main>
+        <div class="container">
+            <section class="mt-5 mb-4">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card wish-list mb-4">
+                            <div class="card-body">
+                                <div class="row mb-4" OnClick="location.href ='http://URL주소'" style="cursor:pointer;">
+                                    <div class="col-md-5 col-lg-3 col-xl-3">
+                                        <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
+                                            <div class="mask waves-effect waves-light">
+                                                <!--상품 이미지-->
+                                                <img class="img-fluid w-100" src="ㅁㄴㅇ">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7 col-lg-9 col-xl-9">
+                                        <div>
+                                            <div class="d-flex justify-content-between">
+                                                <div>
+                                                    <h5>제목</h5>
+                                                    <p class="mb-3 text-muted text-uppercase small">설명</p>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <a href="#!" type="button"
+                                                        class="card-link-secondary small mr-3">삭제(당근마켓 참고) </a>
+                                                </div>
+                                                <p class="mb-0"><span><strong>가격</strong></span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="mb-4">
+                                <div class="row mb-4" OnClick="location.href ='http://URL주소'" style="cursor:pointer;">
+                                    <div class="col-md-5 col-lg-3 col-xl-3">
+                                        <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
+                                            <div class="mask waves-effect waves-light">
+                                                <img class="img-fluid w-100" src="ㅁㄴㅇ">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7 col-lg-9 col-xl-9">
+                                        <div>
+                                            <div class="d-flex justify-content-between">
+                                                <div>
+                                                    <h5>제목</h5>
+                                                    <p class="mb-3 text-muted small">설명</p>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <a href="#!" type="button"
+                                                        class="card-link-secondary small mr-3">삭제(가능하다면 이모티콘?) </a>
+                                                </div>
+                                                <p class="mb-0"><span><strong>가격</strong></span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <!-- Card -->
+                        <!--
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                map? or 위치정보? or 삭제
+                            </div>
+                        </div>
+                    -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+
+</html>

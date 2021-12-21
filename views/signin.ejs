@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <%-include('layouts/header');-%>
+
+<link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
+
+<script src="js/signin.js" defer></script>
+
+<!-- Custom styles for this template -->
+<link href="css/signin.css" rel="stylesheet">
+<%-include('layouts/scripts');-%>
+
+<body class="bg-light text-center">
+  <%-include('layouts/navbar');-%>
+  <div class="py-5 text-center">
+    <h2>한경몰</h2>
+    <p class="lead">please sign in</p>
+  </div>
+  
+  <main class="form-signin">
+
+    <form  method="post">
+
+      <form>
+      <div class="form-floating">
+        <input id="id" name="id" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <label for="floatingInput"> id</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" id="password" name="passwd" class="form-control" id="floatingPassword" placeholder="Password">
+        <label for="floatingPassword">Password</label>
+      </div>
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button id="signin" class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    </form>
+      <button id="signup"  onclick = "location.href = '/signup' " class="w-100 btn btn-lg btn-warning" type="submit">Sign up</button>
+  </main>
+
+
+
+</body>
+
+</html>

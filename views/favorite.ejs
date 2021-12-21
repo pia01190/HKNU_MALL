@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%-include('layouts/header');-%>
+    <%-include('layouts/scripts');-%>
+
+
+<body class="skin-light">
+    <%-include('layouts/navbar');-%>
+
+    <!--div 태크 링크걸기 href-->
+    <!--
+<div OnClick="location.href ='http://URL주소'" style="cursor:pointer;" >
+-->
+
+    <main>
+        <div class="container">
+            <section class="mt-5 mb-4">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="card wish-list mb-4">
+                            <div class="card-body">
+                                <% for(var i =0; i < data.length; i++){ %>
+                                <div class="row mb-4" OnClick="location.href ='/boards/<%= data[i].board_no %>'" style="cursor:pointer;">
+                                    <div class="col-md-5 col-lg-3 col-xl-3">
+                                        <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
+                                            <div class="mask waves-effect waves-light">
+                                                <!--상품 이미지-->
+                                                <% if( image[i] != 'undefined' ){ %>
+                                                    <img class="img-fluid w-50" src="<%= image[i] %>">
+                                                <% }else{ %>
+                                                    <img class="img-fluid w-50" src="/images/x.png">
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-7 col-lg-9 col-xl-9">
+                                        <div>
+                                            <div class="d-flex justify-content-between">
+                                                <div>
+                                                    <h5><%= data[i].title %></h5>
+                                                    <p class="mb-3 text-muted text-uppercase small"><%= data[i].content %></p>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <form action="/favorite/<%= member_id %>/<%= data[i].board_no%>?_method=delete" method="POST">
+                                                        <button class="btn btn-secondary btn-sm mt-4" type="submit">삭제</button>
+                                                        </form>
+                                                </div>
+                                                <p class="mb-0"><span><strong><%= data[i].price %> 원</strong></span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="mb-4">
+
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<%-include('layouts/header');-%>
+
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .zoomHolder {
+      width: 100%;
+      height: auto;
+      position: relative;
+      overflow: hidden
+    }
+  </style>
+  <!-- Custom styles for this template -->
+  <link href="css/product.css" rel="stylesheet">
+  <%-include('layouts/scripts');-%>
+
+    <body>
+      <%-include('layouts/navbar');-%>
+
+        <main class="mt-5">
+          <div class="container">
+            <div class="row justify-content-center">
+              <input class="form-control" id="board_no" name="baord_no" class="board_no" type="hidden"
+                value="<%= board_no %>">
+
+              <div class="col-4">
+                <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                  <div class="carousel-indicators">
+                    <% for( var i=1; i < images.length; i++) {%>
+                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= i %>"
+                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                      <% } %>
+                  </div>
+                  <div class="carousel-inner ">
+                    <div class="carousel-item active zoomHolder">
+                      <% if(!images[1]){%>
+                        <img id="img1" src="/images/x.png" class="d-block w-100 zoom-img" data-elem="pinchzoomer"
+                          alt="" />
+                        <% }else{ %>
+                          <img src="<%= images[1] %>" class="d-block w-100 zoom-img" data-elem="pinchzoomer" alt="">
+                          <% } %>
+                    </div>
+                    <% for(var i=2; i < images.length;i++) { %>
+                      <div class="carousel-item zoomHolder">
+                        <img src="<%= images[i] %>" class="d-block w-100 zoom-img" data-elem="pinchzoomer" alt="">
+                      </div>
+                      <% } %>
+                  </div>
+                  <% if(images[2]) {%>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                      data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                      data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                    <% } %>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="col">
+                  <div class="card shadow-sm">
+                    <div class="card-body">
+                      <small style="float:right" class="text-muted">
+                        <%= category_data[0].category_name%>
+                          <% if( !(category_data[0].scategory_name==category_data[0].category_name)){%>
+                            /<%=category_data[0].scategory_name%>
+                              <% }%>
+                      </small>
+                      <h4 class="card-title pb-2">
+                        <%= product_data[0].title %>
+                      </h4>
+                      <p class="card-title pt-3 pb-5 border-top">
+                        <%= product_data[0].content %>
+                      </p>
+                      <strong>
+                        <%= product_data[0].price %>원
+                      </strong><small style="float:right" class="text-muted">
+                        <%= moment %>
+                      </small>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card shadow-sm mt-3" OnClick="location.href ='/mystore/<%= product_data[0].member_id %>'"
+                  style="cursor:pointer;">
+                  <div class="card-body">
+                    <form>
+                      <div class="row justify-content-start">
+                        <div class="col-2">
+                          <div class="avatar">
+                            <% if(product_data[0].store_image == "/") { %>
+                              <img src="https://static.nid.naver.com/images/web/user/default.png" width="100%" alt="..." class="avatar-img rounded-circle" />
+                              <% } else { %>
+                            <img src="<%= product_data[0].store_image %>" alt="..." class="avatar-img rounded-circle" />
+                            <% } %>
+                          </div>
+                        </div>
+
+                        <div class="col-7">
+                          <h5 class="card-text pt-3 pb-2 border-top">
+                            <%= product_data[0].store_name %>
+                          </h5>
+                        </div>
+                        <p class="card-title pt-3 pb-5 border-top">
+                          <%= product_data[0].store_description %>
+                        </p>
+                        <p class="card-title pt-3 pb-5 border-top">상점 평점:<%= product_data[0].rating %>
+                        </p>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="btn-group mt-3" role="group" aria-label="Basic example">
+                  <% if (product_data[0].member_id==member_id){ %>
+                    <button type="submit" class="btn btn-secondary pull-right"
+                      onclick="location.href = '' ">수정하기</button>
+                    <button type="submit" class="btn btn-secondary pull-right"
+                      onclick="location.href = '' ">삭제하기</button>
+                    <% } %>
+                </div>
+
+                <div class="btn-group mt-3" role="group" aria-label="Basic example" style="float: right;">
+                  <form method="POST">
+                    <input type="hidden" class="form-control" id="member_id" name="member_id" placeholder=""
+                      value="<%= member_id %>">
+                    <button type="submit" class="btn btn-secondary pull-left"
+                      onclick="location.href = '/favorite/<%= member_id %>' ">찜하기</button>
+                  </form>
+                  <button type="button" class="btn btn-secondary">채팅</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          </div>
+        </main>
+
+
+    </body>
+
+</html>

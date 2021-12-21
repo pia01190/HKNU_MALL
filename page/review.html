@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Product example · Bootstrap v5.1</title>
+    <script src="/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bootstrap core CSS -->
+<link href="/dist/css/bootstrap.min.css" rel="stylesheet"> 
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    
+    <!-- Custom styles for this template -->
+    <link href="/main.css" rel="stylesheet">
+  </head>
+  <body>
+     <!--HTML include 참고: https://www.w3schools.com/howto/howto_html_include.asp-->
+    <div style="position: sticky; top: 0; "w3-include-html="header.html"></div>
+    <script>
+      function includeHTML() {
+        var z, i, elmnt, file, xhttp;
+        /* Loop through a collection of all HTML elements: */
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          elmnt = z[i];
+          /*search for elements with a certain atrribute:*/
+          file = elmnt.getAttribute("w3-include-html");
+          if (file) {
+            /* Make an HTTP request using the attribute value as the file name: */
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+              if (this.readyState == 4) {
+                if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+                if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                /* Remove the attribute, and call this function once more: */
+                elmnt.removeAttribute("w3-include-html");
+                includeHTML();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            /* Exit the function: */
+            return;
+          }
+        }
+      }
+    includeHTML();
+  </script>
+  <div class="container">
+    <h2 class="h3 mt-5 mb-5 page-title">Review</h2>
+
+    <div class="col-sm-6 col-md-offset-3 mt-5">
+      <form role="form">
+          <div class="form-group">
+              <label for="inputName">상점명</label>
+              <input type="text" class="form-control" id="inputName">
+          </div>
+
+
+
+<div class="mt-5 mb-5">
+  <label class="col=col-md-3 col-form-labal">이미지</label>
+  <div class="col-md-9">
+    <input type="file" class="form-control" accept="image/png,image/jpeg">
+    <div class="alert alert-secondary" role="alert">
+      <ul>
+        <li>이미지 사이즈 : 700*700</li>
+        <li>파일 사이즈 : 1M 이하</li>
+        <li>파일 확장자 : png, jpg만 가능</li>
+      </ul>
+    </div>
+  </div>
+  </div>
+</div>
+
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">리뷰 작성</label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+</div>
+
+<div class="vstack gap-2 col-md-5 mx-auto mt-5 mb-4">
+  <button type="button" class="btn btn-secondary mb-1">등록</button>
+  <button type="button" class="btn btn-outline-secondary">취소</button>
+</div>
+
+</div>
+      
+  </body>
+</html>

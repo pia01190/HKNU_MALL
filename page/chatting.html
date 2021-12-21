@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>채팅</title>
+    <script src="/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBicTQasHfr57CHiw9W08r4C2Vvgw-aC10"></script>
+    <script src="/myLoc.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+        
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="/chatting.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--코드 재사용을 위해 HTML include를 사용하려 했으나, 일부 컨텐츠가 레이아웃을 무효화시켰기 때문에 일단 사용 중지, 해결되거나 대체방법 생기면 사용-->
+    <!--헤더 : 모든 페이지 공통-->
+    <header>
+        <!--<nav class="navbar navbar-expand-md"...의 형식으로 사용해야되지만 토글버튼이 expand-xx의 형식에 맞춰 사라지게 됨으로 expand-xx 일단 삭제 -->
+        <nav class="navbar navbar-dark bg-dark" aria-label="Fourth navbar example">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+                <a class="navbar-brand" href="#">한경몰</a>
+                <div class="">
+                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                        <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+                    </form>
+                </div>
+                <!--반응형 적용 안됐음. 위의 navbar태그의 navbar-expand-xx 속성 사용하면 반응형 적용 가능-->
+                <div class="d-flex justify-content-end">
+                    <a class="nav-link text-white" href="#">판매하기</a>
+                    <a class="nav-link text-white" href="http://localhost:12345/main/mystore.html">내상점</a>
+                    <a class="nav-link text-white" href="http://localhost:12345/main/favorite.html">찜</a>
+                    <a class="nav-link text-white" href="http://localhost:12345/main/chatting.html">채팅</a>
+                    <button type="button" class="btn btn-outline-light me-2">Login</button>
+                </div>
+            </div>
+            <!--카테고리-->
+            <!--토글 사이드바로 만들면 좋겠지만 아직까진 방법이 없음-->
+            <div class="collapse bg-dark" id="navbarHeader">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4 class="text-white">카테고리</h4>
+                            <ul class="navbar">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle text-white" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          교재
+                        </a>
+                                    <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                        <li><a class="dropdown-item" href="#">전공</a></li>
+                                        <li><a class="dropdown-item" href="#">교양</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle text-white" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          남성의류
+                        </a>
+                                    <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                        <li><a class="dropdown-item" href="#">상의</a></li>
+                                        <li><a class="dropdown-item" href="#">하의</a></li>
+                                        <li><a class="dropdown-item" href="#">아우터</a></li>
+                                        <li><a class="dropdown-item" href="#">모자</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle text-white" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          여성의류
+                        </a>
+                                    <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                        <li><a class="dropdown-item" href="#">상의</a></li>
+                                        <li><a class="dropdown-item" href="#">하의</a></li>
+                                        <li><a class="dropdown-item" href="#">원피스</a></li>
+                                        <li><a class="dropdown-item" href="#">아우터</a></li>
+                                        <li><a class="dropdown-item" href="#">모자</a></li>
+                                    </ul>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link active text-white" aria-current="page" href="#">잡화</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active text-white" aria-current="page" href="#">식품</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active text-white" aria-current="page" href="#">가구</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active text-white" aria-current="page" href="#">기프티콘</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active text-white" aria-current="page" href="#">원룸</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active text-white" aria-current="page" href="#">나눔</a>
+                                    </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div id="location">
+    </div>
+    <div id="distance">
+    </div>
+    <div class="row mt-5">
+        <div class="col-3">
+            <div class="list-group" id="list-tab" role="tablist">
+                <a class="list-group-item list-group-item-action" id="list-home-list" data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">
+        user1
+        <span class="badge bg-primary rounded-pill">(안읽은 대화 숫자)</span>
+      </a>
+                <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile">
+        user2
+        <span class="badge bg-primary rounded-pill">1</span>
+      </a>
+                <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list" href="#list-messages" role="tab" aria-controls="list-messages">
+        user3
+        <span class="badge bg-primary rounded-pill">3</span>
+      </a>
+                <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="list-settings">
+        user4
+        <span class="badge bg-primary rounded-pill">2</span>
+      </a>
+            </div>
+        </div>
+
+        <div class="col-9">
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                    <div class="row">
+                        <div class="col-md-6" id="chat">
+                            <div id="chatHeader">채팅방1</div>
+                            <div id="chatLog">
+                                <div class="anotherMsg">
+                                    <div class="anotherName">user1</div>
+                                    <div class="msg">안녕하세요</div>
+                                </div>
+                                <div class="myMsg">
+                                    <div class="msg">안녕하세요</div>
+                                </div>
+                            </div>
+                            <form id="chatForm">
+                                <input type="text" id="message" placeholder="메시지를 입력하세요">
+                                <div class="button" style="float: right;">
+                                    <label for="image">
+              이미지
+            </label>
+                                </div>
+                                <input type="file" id="image" name="image" accept="image/png, image/jpeg">
+                                <input type="submit" value="보내기" style="float: right;">
+                            </form>
+                        </div>
+                        <!--반응형 적용안됨-->
+                        <div class="col-md-4" id="map">
+                            <div id="map1">지도</div>
+                            <div id="map2"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-success btn-sm " id=btnout>나가기</button>
+                </div>
+
+
+                <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                    <div class="row">
+                        <div class="col-md-6" id="chat">
+                            <div id="chatHeader">채팅방2</div>
+                            <div id="chatLog">
+                                <div class="anotherMsg">
+                                    <div class="anotherName">user2</div>
+                                    <div class="msg">안녕하세요</div>
+                                </div>
+                                <div class="myMsg">
+                                    <div class="msg">안녕하세요</div>
+                                </div>
+                            </div>
+                            <form id="chatForm">
+                                <input type="text" id="message" placeholder="메시지를 입력하세요">
+                                <input type="submit" value="보내기">
+                            </form>
+                        </div>
+
+                        <div class="col-md-4 map">
+                            <div id="map1">지도</div>
+                            <div id="map2"></div>
+                            <div class="out">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-success btn-sm" id="btnout">나가기</button>
+                </div>
+
+
+                <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+                    <div class="row">
+                        <div class="col-md-6" id="chat">
+                            <div id="chatHeader">채팅방3</div>
+                            <div id="chatLog">
+                                <div class="anotherMsg">
+                                    <div class="anotherName">user3</div>
+                                    <div class="msg">안녕하세요</div>
+                                </div>
+                                <div class="myMsg">
+                                    <div class="msg">안녕하세요</div>
+                                </div>
+                            </div>
+                            <form id="chatForm">
+                                <input type="text" id="message" placeholder="메시지를 입력하세요">
+                                <input type="submit" value="보내기">
+                            </form>
+                        </div>
+
+                        <div class="col-md-4 map">
+                            <div id="map1">지도</div>
+                            <div id="map2"></div>
+                            <button class="btn btn-success btn-sm" id="btnout">나가기</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+                    <div class="row">
+                        <div class="col-md-6" id="chat">
+                            <div id="chatHeader">채팅방4</div>
+                            <div id="chatLog">
+                                <div class="anotherMsg">
+                                    <div class="anotherName">user4</div>
+                                    <div class="msg">안녕하세요</div>
+                                </div>
+                                <div class="myMsg">
+                                    <div class="msg">안녕하세요</div>
+                                </div>
+                            </div>
+                            <form id="chatForm">
+                                <input type="text" id="message" placeholder="메시지를 입력하세요">
+                                <input type="submit" value="보내기">
+                            </form>
+                        </div>
+
+                        <div class="col-md-4 map">
+                            <div id="map1">지도</div>
+                            <div id="map2"></div>
+                            <button class="btn btn-success" id="btnout">나가기</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

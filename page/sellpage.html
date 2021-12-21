@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>채팅</title>
+    <script src="/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBicTQasHfr57CHiw9W08r4C2Vvgw-aC10"></script>
+    <script src="/myLoc.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+        
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="/sellpage.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--코드 재사용을 위해 HTML include를 사용하려 했으나, 일부 컨텐츠가 레이아웃을 무효화시켰기 때문에 일단 사용 중지, 해결되거나 대체방법 생기면 사용-->
+    <!--헤더 : 모든 페이지 공통-->
+    <header>
+        <!--<nav class="navbar navbar-expand-md"...의 형식으로 사용해야되지만 토글버튼이 expand-xx의 형식에 맞춰 사라지게 됨으로 expand-xx 일단 삭제 -->
+        <nav class="navbar navbar-dark bg-dark" aria-label="Fourth navbar example">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+                <a class="navbar-brand" href="#">한경몰</a>
+                <div class="">
+                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                        <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+                    </form>
+                </div>
+                <!--반응형 적용 안됐음. 위의 navbar태그의 navbar-expand-xx 속성 사용하면 반응형 적용 가능-->
+                <div class="d-flex justify-content-end">
+                    <a class="nav-link text-white" href="#">판매하기</a>
+                    <a class="nav-link text-white" href="http://localhost:12345/main/mystore.html">내상점</a>
+                    <a class="nav-link text-white" href="http://localhost:12345/main/favorite.html">찜</a>
+                    <a class="nav-link text-white" href="http://localhost:12345/main/chatting.html">채팅</a>
+                    <button type="button" class="btn btn-outline-light me-2">Login</button>
+                </div>
+            </div>
+            <!--카테고리-->
+            <!--토글 사이드바로 만들면 좋겠지만 아직까진 방법이 없음-->
+            <div class="collapse bg-dark" id="navbarHeader">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4 class="text-white">카테고리</h4>
+                            <ul class="navbar">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle text-white" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          교재
+                        </a>
+                                    <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                        <li><a class="dropdown-item" href="#">전공</a></li>
+                                        <li><a class="dropdown-item" href="#">교양</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle text-white" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          남성의류
+                        </a>
+                                    <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                        <li><a class="dropdown-item" href="#">상의</a></li>
+                                        <li><a class="dropdown-item" href="#">하의</a></li>
+                                        <li><a class="dropdown-item" href="#">아우터</a></li>
+                                        <li><a class="dropdown-item" href="#">모자</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle text-white" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          여성의류
+                        </a>
+                                    <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                        <li><a class="dropdown-item" href="#">상의</a></li>
+                                        <li><a class="dropdown-item" href="#">하의</a></li>
+                                        <li><a class="dropdown-item" href="#">원피스</a></li>
+                                        <li><a class="dropdown-item" href="#">아우터</a></li>
+                                        <li><a class="dropdown-item" href="#">모자</a></li>
+                                    </ul>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link active text-white" aria-current="page" href="#">잡화</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active text-white" aria-current="page" href="#">식품</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active text-white" aria-current="page" href="#">가구</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active text-white" aria-current="page" href="#">기프티콘</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active text-white" aria-current="page" href="#">원룸</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active text-white" aria-current="page" href="#">나눔</a>
+                                    </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+</body>
+
+
+<div class="container row" style="float: left; margin: auto;">
+    <div class="col-6" style="float: none; margin:0 auto;">
+        <div class="fw-bold">상품이미지</label>
+            <div class="col-md-5 text-center mb-3">
+                <img src="..." alt="..." class="img-rounded">
+                <img src="..." alt="..." class="img-rounded">
+                <img src="..." alt="..." class="img-rounded">
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="container row" style="float: right; margin: auto;">
+    <div class="col-3" style="float: none; margin:0 auto;">
+
+        <div class="ms-2 me-auto">
+            <div class="fw-bold">
+                <P> 제목:</P>
+
+            </div>
+
+
+        </div>
+        <div class="ms-2 me-auto">
+            <div class="fw-bold">
+                <P> 가격:</P>
+
+
+            </div>
+        </div>
+        <div class="ms-2 me-auto">
+            <div class="fw-bold">
+                <P> 작성자:</P>
+
+            </div>
+
+
+        </div>
+        <a class="btn btn-primary btn-lg active" href="#" role="button" class="btn btn-danger">구매하기</a>
+        <a class="btn btn-primary btn-lg active" href="#" role="button">채팅하기</a>
+    </div>
+</div>
+<p> </p>
+<div class="title2">
+
+    <p style="height: auto; width: 200%; border-bottom:1px solid rgb(0, 0, 0);  font-size:2em;   margin-top: 20%;">상세 설명</p>
+</div>
+<div class=" content ">
+    <p id="content" style="font-size:1.5em;">내용</p>
+</div>
+</div>
+</div>
+</body>
+
+
+
+
+
+
+</html>

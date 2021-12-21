@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<%-include('layouts/header');-%>
+  <%-include('layouts/scripts');-%>
+    <style>
+
+      #messages {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      #messages li {
+        padding: 5px 10px;
+      }
+
+      #messages li:nth-child(odd) {
+        background: #eee;
+      }
+    </style>
+    <link href="/css/chatting.css" rel="stylesheet">
+
+    <body class="skin-light">
+      <%-include('layouts/navbar');-%>
+        <div class="container">
+          <div class="row justify-content-md-center">
+            <div class="col col-lg-2">
+              <input type="hidden" id="chatting_name" value="<%= chatting_name %>" />
+              <select>
+                <option value="Room1">Room1</option>
+                <option value="Room2">Room2</option>
+              </select>
+            </div>
+            <div class="col col-md-auto">
+              <ul id="messages"></ul>
+              <form action="" id=chat_form>
+                <input type="text" id="m" autocomplete="off" />
+                <button>Send</button>
+              </form>
+            </div>
+            <div class="col col-lg-2">
+            </div>
+          </div>
+        </div>
+        <script src="/socket.io/socket.io.js"></script>
+        <script src=”https://code.jquery.com/jquery-1.11.1.js"></script>
+        <script>
+          $(() => {
+            const name = $('#chatting_name').val()
+
+            const socket = io();
+            let room = ['room1', 'room2'];
+            let num = 0;
+            socket.emit('joinRoom', num, name);
+
+            $('select').change(() => {
+              socket.emit('leaveRoom', num, name);
+              num++;
+              num = num % 2;
+              socket.emit('joinRoom', num, name);
+            });
+
+
+            $('#chat_form').submit(() => {
+              socket.emit('chat message', num, name, $('#m').val());
+              $('#m').val('');
+              return false;
+            });
+
+            socket.on('chat message', (name, msg) => {
+              $('#messages').append($('<li>').text(name + '  :  ' +
+                msg));
+            });
+
+            socket.emit('leaveRoom', (num, name) => {
+              $('#messages').append($('<li>').text(name + '    leaved '
+                + room[num] + ' :('));
+            });
+
+            socket.emit('joinRoom', (num, name) => {
+              $('#messages').append($('<li>').text(name + '    joined '
+                + room[num] + ':)'));
+            });
+          });
+        </script>
+    </body>
+
+</html>

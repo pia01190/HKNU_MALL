@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Checkout example · Bootstrap v5.1</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/checkout/">
+
+    <script src="/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/signup.js"></script>
+
+    <!-- Bootstrap core CSS -->
+<link href="/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="/signup.css" rel="stylesheet">
+  </head>
+  <body class="bg-light">
+    <div style="position: sticky; top: 0; "w3-include-html="header.html"></div>
+    <script>
+      function includeHTML() {
+        var z, i, elmnt, file, xhttp;
+        /* Loop through a collection of all HTML elements: */
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          elmnt = z[i];
+          /*search for elements with a certain atrribute:*/
+          file = elmnt.getAttribute("w3-include-html");
+          if (file) {
+            /* Make an HTTP request using the attribute value as the file name: */
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+              if (this.readyState == 4) {
+                if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+                if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                /* Remove the attribute, and call this function once more: */
+                elmnt.removeAttribute("w3-include-html");
+                includeHTML();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            /* Exit the function: */
+            return;
+          }
+        }
+      }
+    includeHTML();
+  </script>
+<div class="container">
+  <main>
+    <div class="py-5 text-center">
+      <h2>정보 수정</h2>
+    </div>
+      <div>
+        <form class="needs-validation" novalidate>
+          <div class="row g-3">
+            <div class="col-6">
+              <label for="birth" class="form-label">아이디 <span class="text-muted"></span></label>
+              <input class="form-control" type="text" placeholder="아이디" aria-label="Disabled input example" disabled>
+            </div>
+
+            <div class="col-6">
+              <label for="birth" class="form-label">학교 이메일 <span class="text-muted"></span></label>
+              <input class="form-control" type="text" placeholder="학교 이메일" aria-label="Disabled input example" disabled>
+            </div>
+          </div>
+
+          <div class="row g-3 mt-2">
+            <div class="col-6">
+              <label for="lastName" class="form-label">비밀번호 변경</label>
+              <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div>
+            <div class="col-6">
+              <label for="lastName" class="form-label">비밀번호 변경 확인</label>
+              <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+              <div class="invalid-feedback">
+                Valid last name is required.
+              </div>
+            </div>
+          </div>
+       
+          <div class="row g-3 mt-2">
+            <div class="col-6">
+              <label for="username" class="form-label">이름</label>
+              <div class="input-group has-validation">
+                <input type="text" class="form-control" id="username" placeholder="" required>
+              <div class="invalid-feedback">
+                  Your name is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6">
+              <label for="birth" class="form-label">생년월일 <span class="text-muted"></span></label>
+              <input class="form-control" type="text" placeholder="생년월일" aria-label="Disabled input example" disabled>
+            </div>
+          </div>
+
+          <div class="row g-3 mt-2">
+            <div class="col-6">
+              <label for="address2" class="form-label">닉네임 <span class="text-muted"></span></label>
+              <input type="text" class="form-control" id="address2" placeholder="">
+            </div>
+            <div class="col-6">
+              <label for="birth" class="form-label">성별 <span class="text-muted"></span></label>
+              <input class="form-control" type="text" placeholder="성별" aria-label="Disabled input example" disabled>
+            </div>
+          </div>
+
+          <div class="row g-3 mt-2">
+            <div class="col-6">
+              <label for="address2" class="form-label">휴대전화 <span class="text-muted"></span></label>
+              <input type="text" class="form-control" id="address2" placeholder="">
+            </div>
+            <div class="col-6">
+              <label for="birth" class="form-label">한경대 학번 <span class="text-muted"></span></label>
+              <input class="form-control" type="text" placeholder="한경대 학번" aria-label="Disabled input example" disabled>
+            </div>
+          </div>
+
+          <div class="d-grid gap-2 col-4 mx-auto">
+            <button class="btn btn-secondary btn-lg mt-3" type="button">수정</button>
+            <button class="btn btn-secondary btn-lg mt-2 mb-3" type="button">취소</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </main>
+
+</div>
+
+
+
+  </body>
+</html>

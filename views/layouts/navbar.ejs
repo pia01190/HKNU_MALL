@@ -1,0 +1,95 @@
+<!--<nav class="navbar navbar-expand-md"...의 형식으로 사용해야되지만 토글버튼이 expand-xx의 형식에 맞춰 사라지게 됨으로 expand-xx 일단 삭제 -->
+    <nav class="navbar sticky-top navbar-dark bg-dark" aria-label="Fourth navbar example">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+            <a class="navbar-brand" href="/">한경몰</a>
+            <div class="">
+                <form action="http://localhost:12345/boards" method="GET" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                    <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search" name="search">
+                </form>
+            </div>
+            <!--반응형 적용 안됐음. 위의 navbar태그의 navbar-expand-xx 속성 사용하면 반응형 적용 가능-->
+            <div class="d-flex justify-content-end">
+                <% if(is_logined) { %>
+                <a class="nav-link text-white" href="/product">판매하기</a>
+                <a class="nav-link text-white" href="/mystore/<%= member_id %>">내상점</a>
+                <a class="nav-link text-white" href="/favorite/<%= member_id %>">찜</a>
+                <a class="nav-link text-white" href="/chatting">채팅</a>
+                <% } %>
+                <% if(is_logined){ %>
+                    <button type="button" onclick = "location.href = '/signout' " class="btn btn-outline-light me-2">Sign out</button>  
+
+                <% }else{ %>
+                    <button type="button" onclick = "location.href = '/signin' " class="btn btn-outline-light me-2">Sign in</button>
+                <% } %>
+
+
+            </div>
+        </div>
+        <!--카테고리-->
+        <!--토글 사이드바로 만들면 좋겠지만 아직까진 방법이 없음-->
+        <div class="collapse bg-dark" id="navbarHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4 class="text-white">카테고리</h4>
+                        <form action="" method="GET">
+                        <ul class="navbar">
+                            <li class="nav-item dropdown" name="sort-by">
+                                <a class="nav-link dropdown-toggle text-white" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      교재
+                    </a>
+                                <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                    <li><a class="dropdown-item" href="http://localhost:12345/boards?subcategory=11">전공</a></li>
+                                    <li><a class="dropdown-item" href="http://localhost:12345/boards?subcategory=12">교양</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-white" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      남성의류
+                    </a>
+                                <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                    <li><a class="dropdown-item" href="http://localhost:12345/boards?subcategory=21">상의</a></li>
+                                    <li><a class="dropdown-item" href="http://localhost:12345/boards?subcategory=22">하의</a></li>
+                                    <li><a class="dropdown-item" href="http://localhost:12345/boards?subcategory=23">아우터</a></li>
+                                    <li><a class="dropdown-item" href="http://localhost:12345/boards?subcategory=24">모자</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-white" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      여성의류
+                    </a>
+                                <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                    <li><a class="dropdown-item" href="http://localhost:12345/boards?subcategory=31">상의</a></li>
+                                    <li><a class="dropdown-item" href="http://localhost:12345/boards?subcategory=32">하의</a></li>
+                                    <li><a class="dropdown-item" href="http://localhost:12345/boards?subcategory=33">원피스</a></li>
+                                    <li><a class="dropdown-item" href="http://localhost:12345/boards?subcategory=34">아우터</a></li>
+                                    <li><a class="dropdown-item" href="http://localhost:12345/boards?subcategory=35">모자</a></li>
+                                </ul>
+
+                                <li class="nav-item">
+                                    <a class="nav-link active text-white" aria-current="page" href="http://localhost:12345/boards?subcategory=41">잡화</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active text-white" aria-current="page" href="http://localhost:12345/boards?subcategory=51">식품</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active text-white" aria-current="page" href="http://localhost:12345/boards?subcategory=61">기프티콘</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active text-white" aria-current="page" href="http://localhost:12345/boards?subcategory=71">원룸</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active text-white" aria-current="page" href="http://localhost:12345/boards?subcategory=81">나눔</a>
+                                </li>
+                        </ul>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
